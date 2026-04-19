@@ -20,9 +20,17 @@
 
 <body>
 
-  <button id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
-    <span id="theme-icon">☀️</span><span id="theme-label">Modo claro</span>
-  </button>
+  <nav class="top-bar" id="top-bar">
+    <button class="top-bar-hamburger" onclick="toggleMobileMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="top-bar-links">&#9776;</button>
+    <div class="top-bar-links" id="top-bar-links">
+      <a href="https://comofuncionanlascosas.as" target="_blank" rel="noopener">Cómo funcionan las cosas</a>
+      <a href="https://curiosidad.club" target="_blank" rel="noopener">Club de la curiosidad</a>
+      <a href="https://hola.cflc.email" target="_blank" rel="noopener">Suscribirse al newsletter</a>
+    </div>
+    <button id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+      <span id="theme-icon">☀️</span><span id="theme-label">Modo claro</span>
+    </button>
+  </nav>
 
   <header class="hero">
     <div class="eye">Querida persona que lee</div>
@@ -131,6 +139,10 @@
   </section>
 
   <footer>
+    <div class="footer-credit">
+      Hecho con ❤ en Torino, Italia por <a href="https://valentinmuro.com" target="_blank" rel="noopener">Valentín Muro</a><br>
+      gracias al apoyo del <em><a href="https://curiosidad.club" target="_blank" rel="noopener">Club de la curiosidad</a></em>.
+    </div>
     <a href="https://curiosidad.club" target="_blank">curiosidad.club</a> &nbsp;·&nbsp;
     <a href="https://comofuncionanlascos.as" target="_blank">Cómo funcionan las cosas</a>
   </footer>

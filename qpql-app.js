@@ -65,8 +65,8 @@ function getMuted()  { return getComputedStyle(document.documentElement).getProp
 function applyChartTheme() {
   const isDark = !document.documentElement.classList.contains('light');
   const gridColor   = isDark ? '#1a1815' : '#e0dbd2';
-  const tickColor   = isDark ? '#5a5040' : '#a09080';
-  const legendColor = isDark ? '#5a5040' : '#a09080';
+  const tickColor   = isDark ? '#ccc' : '#a09080';
+  const legendColor = isDark ? '#ccc' : '#a09080';
   const bgColor     = isDark ? '#0f0e0c' : '#ffffff';
   Chart.defaults.color       = tickColor;
   Chart.defaults.borderColor = gridColor;
@@ -437,6 +437,13 @@ function toggleTheme() {
   document.getElementById('theme-label').textContent = isLight ? 'Modo oscuro' : 'Modo claro';
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
   applyChartTheme();
+}
+
+function toggleMobileMenu() {
+  const links = document.getElementById('top-bar-links');
+  const btn   = document.querySelector('.top-bar-hamburger');
+  const open  = links.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
 }
 
 (function initTheme() {
