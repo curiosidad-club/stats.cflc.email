@@ -1,83 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QPQL · 9 años de Cómo funcionan las cosas</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<link rel="stylesheet" href="qpql-dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QPQL · 9 años de Cómo funcionan las cosas</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="qpql-dashboard.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDVWKEPYYS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JDVWKEPYYS');
+  </script>
 </head>
+
 <body>
 
-<button id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
-  <span id="theme-icon">☀️</span><span id="theme-label">Modo claro</span>
-</button>
+  <button id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+    <span id="theme-icon">☀️</span><span id="theme-label">Modo claro</span>
+  </button>
 
-<header class="hero">
-  <div class="eye">Querida persona que lee</div>
-  <h1>9 años de<br>Cómo funcionan las cosas</h1>
-  <p class="hero-desc">Una radiografía completa de cada año del newsletter, con todos los números recopilados desde el primer correo. Actualizado al 18 de abril de 2026.</p>
-  <div class="hero-nums">
-    <div class="hero-num"><span class="hero-num-v">35.103</span><span class="hero-num-l">personas que alguna vez se suscribieron</span></div>
-    <div class="hero-num"><span class="hero-num-v">593</span><span class="hero-num-l">correos enviados</span></div>
-    <div class="hero-num"><span class="hero-num-v">158</span><span class="hero-num-l">temas distintos</span></div>
-    <div class="hero-num"><span class="hero-num-v">1.100+</span><span class="hero-num-l">temas sugeridos</span></div>
-  </div>
-</header>
+  <header class="hero">
+    <div class="eye">Querida persona que lee</div>
+    <h1>9 años de<br>Cómo funcionan las cosas</h1>
+    <p class="hero-desc">Una radiografía completa de cada año del newsletter, con todos los números recopilados desde el
+      primer correo. Actualizado al 18 de abril de 2026.</p>
+    <div class="hero-nums">
+      <div class="hero-num"><span class="hero-num-v">35.103</span><span class="hero-num-l">personas que alguna vez se
+          suscribieron</span></div>
+      <div class="hero-num"><span class="hero-num-v">593</span><span class="hero-num-l">correos enviados</span></div>
+      <div class="hero-num"><span class="hero-num-v">158</span><span class="hero-num-l">temas distintos</span></div>
+      <div class="hero-num"><span class="hero-num-v">1.100+</span><span class="hero-num-l">temas sugeridos</span></div>
+    </div>
+  </header>
 
-<section class="charts-wrap">
-  <div class="sec-eye">Evolución año a año</div>
-  <div class="charts-grid">
-    <div class="cc"><div class="cc-title">Suscriptores activos</div><canvas id="c-subs" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Tasa de apertura</div><canvas id="c-open" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Temas sugeridos por año</div><canvas id="c-sugg" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Nuevas suscripciones vs. desuscripciones</div><canvas id="c-delta" height="170"></canvas><div class="cc-note">* 2018–2019 estimado (Δsuscriptores + bajas) · 2022–2023 aproximado</div></div>
-    <div class="cc"><div class="cc-title">Respuestas recibidas por año</div><canvas id="c-replies" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Correos enviados — CFLC vs. Club</div><canvas id="c-sent" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Máximo de días sin enviar un correo</div><canvas id="c-gaps" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Respuestas promedio por correo</div><canvas id="c-avgrep" height="170"></canvas><div class="cc-note">Respuestas totales ÷ correos enviados (CFLC + Club)</div></div>
-    <div class="cc">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <div class="cc-title" style="margin-bottom:0">Conversaciones por año</div>
-        <div style="display:flex;gap:4px">
-          <button id="conv-toggle-threads" onclick="convToggle('threads')" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:3px;padding:3px 10px;font-family:system-ui;font-size:0.68rem;color:var(--text);cursor:pointer;transition:background .15s">Conversaciones</button>
-          <button id="conv-toggle-messages" onclick="convToggle('messages')" style="background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:3px 10px;font-family:system-ui;font-size:0.68rem;color:var(--muted);cursor:pointer;transition:background .15s">Mensajes</button>
-        </div>
+  <section class="charts-wrap">
+    <div class="sec-eye">Evolución año a año</div>
+    <div class="charts-grid">
+      <div class="cc">
+        <div class="cc-title">Suscriptores activos</div><canvas id="c-subs" height="170"></canvas>
       </div>
-      <canvas id="c-conv" height="170"></canvas>
-      <div class="cc-note">Abr–abr &nbsp;·&nbsp; 2025 cerrado &nbsp;·&nbsp; Oscuro: Club de la curiosidad</div>
+      <div class="cc">
+        <div class="cc-title">Tasa de apertura</div><canvas id="c-open" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Temas sugeridos por año</div><canvas id="c-sugg" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Nuevas suscripciones vs. desuscripciones</div><canvas id="c-delta" height="170"></canvas>
+        <div class="cc-note">* 2018–2019 estimado (Δsuscriptores + bajas) · 2022–2023 aproximado</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Respuestas recibidas por año</div><canvas id="c-replies" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Correos enviados — CFLC vs. Club</div><canvas id="c-sent" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Máximo de días sin enviar un correo</div><canvas id="c-gaps" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Respuestas promedio por correo</div><canvas id="c-avgrep" height="170"></canvas>
+        <div class="cc-note">Respuestas totales ÷ correos enviados (CFLC + Club)</div>
+      </div>
+      <div class="cc">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div class="cc-title" style="margin-bottom:0">Conversaciones por año</div>
+          <div style="display:flex;gap:4px">
+            <button id="conv-toggle-threads" onclick="convToggle('threads')"
+              style="background:var(--bg-card2);border:1px solid var(--border);border-radius:3px;padding:3px 10px;font-family:system-ui;font-size:0.68rem;color:var(--text);cursor:pointer;transition:background .15s">Conversaciones</button>
+            <button id="conv-toggle-messages" onclick="convToggle('messages')"
+              style="background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:3px 10px;font-family:system-ui;font-size:0.68rem;color:var(--muted);cursor:pointer;transition:background .15s">Mensajes</button>
+          </div>
+        </div>
+        <canvas id="c-conv" height="170"></canvas>
+        <div class="cc-note">Abr–abr &nbsp;·&nbsp; 2025 cerrado &nbsp;·&nbsp; Oscuro: Club de la curiosidad</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Correos pendientes de responder</div><canvas id="c-pending" height="170"></canvas>
+        <div class="cc-note">* 2022 estimado</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Libros consultados</div><canvas id="c-books" height="170"></canvas>
+        <div class="cc-note">* Desde 2020 · artículos desde 2021 · 2022 sin dato</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Mensajes de recomendación acumulados</div><canvas id="c-testim" height="170"></canvas>
+        <div class="cc-note"><a href="https://amor.cflc.email" target="_blank" style="color:var(--accent)">Leer todos
+            →</a></div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Videollamadas con personas del Club</div><canvas id="c-calls" height="170"></canvas>
+        <div class="cc-note">* Desde 2022</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Encuentros de lectura</div><canvas id="c-reading" height="170"></canvas>
+        <div class="cc-note">Apilado: tiempo en encuentros + preparación &nbsp;·&nbsp; Desde 2023</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Horas de investigación y escritura</div><canvas id="c-hours" height="170"></canvas>
+        <div class="cc-note">* Desde 2019</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Horas respondiendo correos</div><canvas id="c-rephrs" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Correos y proyectos del Club</div><canvas id="c-clubhrs" height="170"></canvas>
+        <div class="cc-note">* Desde 2019</div>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Costos operativos por año (USD)</div>
+        <canvas id="c-inv" height="170"></canvas>
+      </div>
+      <div class="cc">
+        <div class="cc-title">Dinero donado — acumulado total</div>
+        <canvas id="c-donations" height="170"></canvas>
+        <div class="cc-note">Años calendario &nbsp;·&nbsp; Línea punteada: acumulado &nbsp;·&nbsp; Total incl. ene–abr
+          2026: USD 4.709,05</div>
+      </div>
     </div>
-    <div class="cc"><div class="cc-title">Correos pendientes de responder</div><canvas id="c-pending" height="170"></canvas><div class="cc-note">* 2022 estimado</div></div>
-    <div class="cc"><div class="cc-title">Libros consultados</div><canvas id="c-books" height="170"></canvas><div class="cc-note">* Desde 2020 · artículos desde 2021 · 2022 sin dato</div></div>
-    <div class="cc"><div class="cc-title">Mensajes de recomendación acumulados</div><canvas id="c-testim" height="170"></canvas><div class="cc-note"><a href="https://amor.cflc.email" target="_blank" style="color:var(--accent)">Leer todos →</a></div></div>
-    <div class="cc"><div class="cc-title">Videollamadas con personas del Club</div><canvas id="c-calls" height="170"></canvas><div class="cc-note">* Desde 2022</div></div>
-    <div class="cc"><div class="cc-title">Encuentros de lectura</div><canvas id="c-reading" height="170"></canvas><div class="cc-note">Apilado: tiempo en encuentros + preparación &nbsp;·&nbsp; Desde 2023</div></div>
-    <div class="cc"><div class="cc-title">Horas de investigación y escritura</div><canvas id="c-hours" height="170"></canvas><div class="cc-note">* Desde 2019</div></div>
-    <div class="cc"><div class="cc-title">Horas respondiendo correos</div><canvas id="c-rephrs" height="170"></canvas></div>
-    <div class="cc"><div class="cc-title">Correos y proyectos del Club</div><canvas id="c-clubhrs" height="170"></canvas><div class="cc-note">* Desde 2019</div></div>
-    <div class="cc">
-      <div class="cc-title">Costos operativos por año (USD)</div>
-      <canvas id="c-inv" height="170"></canvas>
-    </div>
-    <div class="cc">
-      <div class="cc-title">Dinero donado — acumulado total</div>
-      <canvas id="c-donations" height="170"></canvas>
-      <div class="cc-note">Años calendario &nbsp;·&nbsp; Línea punteada: acumulado &nbsp;·&nbsp; Total incl. ene–abr 2026: USD 4.709,05</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="tabs-wrap">
-  <nav class="tab-bar" id="tab-bar"></nav>
-  <div id="year-panel"></div>
-</section>
+  <section class="tabs-wrap">
+    <nav class="tab-bar" id="tab-bar"></nav>
+    <div id="year-panel"></div>
+  </section>
 
-<footer>
-  <a href="https://curiosidad.club" target="_blank">curiosidad.club</a> &nbsp;·&nbsp;
-  <a href="https://comofuncionanlascos.as" target="_blank">Cómo funcionan las cosas</a>
-</footer>
+  <footer>
+    <a href="https://curiosidad.club" target="_blank">curiosidad.club</a> &nbsp;·&nbsp;
+    <a href="https://comofuncionanlascos.as" target="_blank">Cómo funcionan las cosas</a>
+  </footer>
 
-<script src="qpql-data.js"></script>
-<script src="qpql-app.js"></script>
+  <script src="qpql-data.js"></script>
+  <script src="qpql-app.js"></script>
 </body>
+
 </html>
