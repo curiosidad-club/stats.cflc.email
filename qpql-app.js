@@ -55,7 +55,7 @@ function renderYear(year) {
 const CLRS = ['#E69F00','#56B4E9','#009E73','#F0E442','#0072B2','#D55E00','#CC79A7','#888888'];
 const LBL  = ['2017','2018','2019','2020','2021','2022','2023','2024'];
 const LBL9 = ['2017','2018','2019','2020','2021','2022','2023','2024','2025'];
-const CLR9 = [...CLRS,'#44AA99'];
+const CLR9 = [...CLRS,'#CCC'];
 const CI   = {}; // chart instances
 
 function getBG()     { return getComputedStyle(document.documentElement).getPropertyValue('--bg').trim(); }
@@ -86,8 +86,6 @@ function applyChartTheme() {
   });
 }
 
-Chart.defaults.color       = '#5a5040';
-Chart.defaults.borderColor = '#1e1c17';
 Chart.defaults.font.family = 'system-ui,-apple-system,sans-serif';
 Chart.defaults.font.size   = 11;
 
@@ -459,5 +457,5 @@ function toggleMobileMenu() {
 // ── INIT ─────────────────────────────────────
 buildTabs();
 initCharts();
+applyChartTheme();
 switchTab('2025');
-if (document.documentElement.classList.contains('light')) applyChartTheme();
