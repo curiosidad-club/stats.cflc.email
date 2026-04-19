@@ -452,5 +452,5 @@ function toggleTheme() {
 // ── INIT ─────────────────────────────────────
 buildTabs();
 initCharts();
-switchTab('2017');
+switchTab('2025');
 if (document.documentElement.classList.contains('light')) applyChartTheme();
